@@ -1,0 +1,10 @@
+name: ChoreChing!
+
+targets:
+  ChoreChing!:
+    type: application
+    platform: iOS
+    sources: [Sources]
+    deploymentTarget: "16.0"
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.example.ChoreChing
