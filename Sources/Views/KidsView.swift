@@ -105,7 +105,9 @@ struct KidsView: View {
             }
             .navigationTitle("Chores")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button("Undo") { store.undo() }
+                        .disabled(!store.canUndo)
                     Button("Add Kid") { showAddKid = true }
                 }
             }
@@ -139,9 +141,7 @@ struct KidsView: View {
                         editKidName = ""
                     }, trailing: Button("Save") {
                         if let kid = selectedKid, !editKidName.isEmpty {
-                            if let idx = store.kids.firstIndex(where: { $0.id == kid.id }) {
-                                store.kids[idx].name = editKidName
-                            }
+                            store.updateKidName(kid.id, oldName: kid.name, newName: editKidName)
                             showEditKid = false
                             editKidName = ""
                         }

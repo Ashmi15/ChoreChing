@@ -55,12 +55,21 @@ struct TemplatesView: View {
                 }
             }
             .navigationTitle("Chore List")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Undo") { store.undo() }
+                        .disabled(!store.canUndo)
+                }
+            }
             .alert("Invalid amount", isPresented: $showingAlert) {
                 Button("OK", role: .cancel) {}
             } message: {
                 Text("Please enter a valid number.")
             }
-            .sheet(item: $editingTemplate) { template in
+            .sheet(isPresented: Binding(
+                get: { editingTemplate != nil },
+                set: { if !$0 { editingTemplate = nil } }
+            )) {
                 NavigationView {
                     Form {
                         TextField("Title", text: $editTitle)
@@ -71,11 +80,14 @@ struct TemplatesView: View {
                     .navigationBarItems(leading: Button("Cancel") {
                         editingTemplate = nil
                     }, trailing: Button("Save") {
-                        if let idx = store.templates.firstIndex(where: { $0.id == template.id }),
-                           let amt = Double(editAmount), !editTitle.isEmpty {
-                            store.templates[idx].title = editTitle
-                            store.templates[idx].amount = amt
-                            editingTemplate = nil
+                        if let template = editingTemplate,
+                           let idx = store.templates.firstIndex(where: { $0.id == template.id }) {
+                            let oldTitle = template.title
+                            let oldAmt = template.amount
+                            if let amt = Double(editAmount), !editTitle.isEmpty {
+                                store.updateTemplate(template.id, oldTitle: oldTitle, oldAmount: oldAmt, newTitle: editTitle, newAmount: amt)
+                                editingTemplate = nil
+                            }
                         }
                     })
                 }

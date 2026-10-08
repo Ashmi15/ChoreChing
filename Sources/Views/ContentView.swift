@@ -19,8 +19,13 @@ struct ContentView: View {
                 selectedKidId = store.kids.first?.id
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button("Undo") {
+                    store.undo()
+                }
+                .disabled(!store.canUndo)
+            }
+        }
     }
-}
-#Preview {
-    ContentView()
 }
