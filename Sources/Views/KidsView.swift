@@ -5,6 +5,8 @@ struct KidsView: View {
     @Binding var selectedKidId: String?
     @Binding var selectedDate: Date
     @Binding var showWeek: Bool
+    @State private var showAddKid = false
+    @State private var newKidName = ""
     
     var selectedKid: Kid? {
         store.kids.first { $0.id == selectedKidId }
@@ -12,14 +14,22 @@ struct KidsView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Picker("Kid", selection: $selectedKidId) {
-                    ForEach(store.kids) { kid in
-                        Text(kid.name).tag(Optional(kid.id))
+            VStack(spacing: 12) {
+                if !store.kids.isEmpty {
+                    Picker("Kid", selection: $selectedKidId) {
+                        ForEach(store.kids) { kid in
+                            Text(kid.name).tag(kid.id as String?)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .padding(.horizontal)
+                    
+                    if let kid = selectedKid {
+                        Text("Balance: $\(kid.balance, specifier: "%.2f")")
+                            .font(.title2)
+                            .foregroundColor(.green)
                     }
                 }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding(.horizontal)
                 
                 DatePicker("Date", selection: $selectedDate, displayedComponents: [.date])
                     .datePickerStyle(.compact)
@@ -37,54 +47,85 @@ struct KidsView: View {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(a.title)
+                                    .font(.headline)
                                 Text("$\(a.amount, specifier: "%.2f")")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
                             }
                             Spacer()
-                            if a.status == .pending {
-                                Button("Done") { store.markDone(a.id) }
-                            } else if a.status == .done {
-                                HStack {
-                                    Button("Approve") { store.approve(a.id) }
-                                    Button("Decline") { store.decline(a.id) }
+                            switch a.status {
+                            case .pending:
+                                Button("Mark Done") {
+                                    store.markDone(a.id)
                                 }
-                            } else if a.status == .approved {
-                                Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
-                            } else {
-                                Text("Declined").foregroundColor(.red)
+                                .buttonStyle(.borderedProminent)
+                            case .done:
+                                HStack(spacing: 8) {
+                                    Button("Approve") { store.approve(a.id) }
+                                        .buttonStyle(.borderedProminent)
+                                        .tint(.green)
+                                    Button("Decline") { store.decline(a.id) }
+                                        .buttonStyle(.bordered)
+                                        .tint(.red)
+                                }
+                            case .approved:
+                                Label("Approved", systemImage: "checkmark.circle.fill")
+                                    .foregroundColor(.green)
+                            case .declined:
+                                Label("Declined", systemImage: "xmark.circle.fill")
+                                    .foregroundColor(.red)
                             }
                         }
+                        .padding(.vertical, 4)
                     }
                 }
                 
                 if let kid = selectedKid {
-                    NavigationLink("Assign Chore") {
-                        AssignChoreView(store: store, kidId: kid.id, date: selectedDate)
+                    NavigationLink(destination: AssignChoreView(store: store, kidId: kid.id, date: selectedDate)) {
+                        Text("Assign Chore")
+                            .font(.headline)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
                     }
+                    .padding(.horizontal)
+                    .padding(.bottom)
+                } else {
+                    Button("Add Your First Kid") {
+                        showAddKid = true
+                    }
+                    .buttonStyle(.borderedProminent)
                     .padding()
                 }
             }
-            .navigationTitle(selectedKid?.name ?? "No Kids")
+            .navigationTitle("Chores")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Add Kid") { addKid() }
+                    Button("Add Kid") { showAddKid = true }
+                }
+            }
+            .sheet(isPresented: $showAddKid) {
+                NavigationView {
+                    Form {
+                        TextField("Kid's name", text: $newKidName)
+                    }
+                    .navigationTitle("Add Kid")
+                    .navigationBarItems(leading: Button("Cancel") {
+                        showAddKid = false
+                        newKidName = ""
+                    }, trailing: Button("Save") {
+                        if !newKidName.isEmpty {
+                            store.addKid(newKidName)
+                            selectedKidId = store.kids.last?.id
+                            showAddKid = false
+                            newKidName = ""
+                        }
+                    })
                 }
             }
         }
-    }
-    
-    func addKid() {
-        let alert = UIAlertController(title: "Add Kid", message: nil, preferredStyle: .alert)
-        alert.addTextField { $0.placeholder = "Name" }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Add", style: .default) { _ in
-            if let name = alert.textFields?.first?.text, !name.isEmpty {
-                store.addKid(name)
-                selectedKidId = store.kids.last?.id
-            }
-        })
-        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true)
     }
     
     func filteredAssigned() -> [AssignedChore] {
