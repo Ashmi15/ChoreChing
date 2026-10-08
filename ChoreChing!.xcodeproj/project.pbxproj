@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3333BACD88BC1B38A42B45C6 /* ChoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E5B80110A6014520D052C /* ChoreModels.swift */; };
+		39DC1D2001664C4DE39233AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D37327A36959578E020D30 /* ContentView.swift */; };
 		B429760740106730C0107677 /* ParentDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E4F5F6AD4764A0BC278FA /* ParentDashboard.swift */; };
 		F5D0D4959BC7E3A3FBFF491A /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD62A72EB6958C7A94BADB /* App.swift */; };
 /* End PBXBuildFile section */
@@ -15,6 +16,7 @@
 /* Begin PBXFileReference section */
 		08199D55C1B90B3F18A488A2 /* ChoreChing.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ChoreChing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E1E5B80110A6014520D052C /* ChoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreModels.swift; sourceTree = "<group>"; };
+		80D37327A36959578E020D30 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C21E4F5F6AD4764A0BC278FA /* ParentDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentDashboard.swift; sourceTree = "<group>"; };
 		D2DD62A72EB6958C7A94BADB /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -33,6 +35,7 @@
 			children = (
 				D2DD62A72EB6958C7A94BADB /* App.swift */,
 				1E1E5B80110A6014520D052C /* ChoreModels.swift */,
+				80D37327A36959578E020D30 /* ContentView.swift */,
 				C21E4F5F6AD4764A0BC278FA /* ParentDashboard.swift */,
 			);
 			path = Sources;
@@ -103,6 +106,7 @@
 			files = (
 				F5D0D4959BC7E3A3FBFF491A /* App.swift in Sources */,
 				3333BACD88BC1B38A42B45C6 /* ChoreModels.swift in Sources */,
+				39DC1D2001664C4DE39233AC /* ContentView.swift in Sources */,
 				B429760740106730C0107677 /* ParentDashboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

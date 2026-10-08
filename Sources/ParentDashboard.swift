@@ -35,3 +35,6 @@ struct ParentDashboard: View {
         }
     }
 }
+#Preview {
+    ParentDashboard()
+}
