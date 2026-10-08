@@ -118,6 +118,7 @@ class Store: ObservableObject {
             let kidId = assigned[idx].kidId
             let amt = assigned[idx].amount
             let oldStatus = assigned[idx].status
+            let title = assigned[idx].title
             addUndo({ [weak self] in
                 if let i = self?.assigned.firstIndex(where: { $0.id == id }) {
                     self?.assigned[i].status = oldStatus
@@ -126,7 +127,7 @@ class Store: ObservableObject {
                         self?.kids[kidx].balance -= amt
                     }
                 }
-                self?.transactions.removeAll { $0.reason == assigned[idx].title && $0.kidId == kidId && abs($0.amount - amt) < 0.01 }
+                self?.transactions.removeAll { $0.reason == title && $0.kidId == kidId && abs($0.amount - amt) < 0.01 }
             }, description: "Approve")
             assigned[idx].status = .approved
             assigned[idx].approvedAt = Date()
