@@ -4,9 +4,10 @@ struct KidsView: View {
     @ObservedObject var store: Store
     @Binding var selectedKidId: String?
     @Binding var selectedDate: Date
-    @Binding var showWeek: Bool
     @State private var showAddKid = false
     @State private var newKidName = ""
+    @State private var showEditKid = false
+    @State private var editKidName = ""
     
     var selectedKid: Kid? {
         store.kids.first { $0.id == selectedKidId }
@@ -25,22 +26,24 @@ struct KidsView: View {
                     .padding(.horizontal)
                     
                     if let kid = selectedKid {
-                        Text("Balance: $\(kid.balance, specifier: "%.2f")")
-                            .font(.title2)
-                            .foregroundColor(.green)
+                        HStack {
+                            Text("Balance: $\(kid.balance, specifier: "%.2f")")
+                                .font(.title2)
+                                .foregroundColor(.green)
+                            Spacer()
+                            Button("Edit Name") {
+                                editKidName = kid.name
+                                showEditKid = true
+                            }
+                            .buttonStyle(.bordered)
+                        }
+                        .padding(.horizontal)
                     }
                 }
                 
                 DatePicker("Date", selection: $selectedDate, displayedComponents: [.date])
                     .datePickerStyle(.compact)
                     .padding(.horizontal)
-                
-                Picker("View", selection: $showWeek) {
-                    Text("Daily").tag(false)
-                    Text("Weekly").tag(true)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding(.horizontal)
                 
                 List {
                     ForEach(filteredAssigned()) { a in
@@ -121,6 +124,26 @@ struct KidsView: View {
                             selectedKidId = store.kids.last?.id
                             showAddKid = false
                             newKidName = ""
+                        }
+                    })
+                }
+            }
+            .sheet(isPresented: $showEditKid) {
+                NavigationView {
+                    Form {
+                        TextField("Kid's name", text: $editKidName)
+                    }
+                    .navigationTitle("Edit Kid Name")
+                    .navigationBarItems(leading: Button("Cancel") {
+                        showEditKid = false
+                        editKidName = ""
+                    }, trailing: Button("Save") {
+                        if let kid = selectedKid, !editKidName.isEmpty {
+                            if let idx = store.kids.firstIndex(where: { $0.id == kid.id }) {
+                                store.kids[idx].name = editKidName
+                            }
+                            showEditKid = false
+                            editKidName = ""
                         }
                     })
                 }
