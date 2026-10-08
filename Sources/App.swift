@@ -4,7 +4,7 @@ import SwiftUI
 struct ChoreChingApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ParentDashboard()
         }
     }
 }

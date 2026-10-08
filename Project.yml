@@ -1,10 +1,16 @@
-name: ChoreChing!
+name: ChoreChing
+
+options:
+  bundleIdPrefix: com.choreching
 
 targets:
-  ChoreChing!:
+  ChoreChing:
     type: application
     platform: iOS
-    sources: [Sources]
     deploymentTarget: "16.0"
+    sources:
+      - Sources
     settings:
-      PRODUCT_BUNDLE_IDENTIFIER: com.example.ChoreChing
+      PRODUCT_BUNDLE_IDENTIFIER: com.choreching.app
+      INFOPLIST_FILE: ""
+      GENERATE_INFOPLIST_FILE: YES

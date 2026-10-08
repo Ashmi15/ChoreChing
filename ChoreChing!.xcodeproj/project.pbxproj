@@ -7,66 +7,66 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		738119D3B27D88FF7B471869 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D618E0E182E76066D0F0DD /* App.swift */; };
-		C0330CBF181BDC3A36D6DE3A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA42F0000EDF02A680F1038 /* ContentView.swift */; };
+		39DC1D2001664C4DE39233AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D37327A36959578E020D30 /* ContentView.swift */; };
+		F5D0D4959BC7E3A3FBFF491A /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD62A72EB6958C7A94BADB /* App.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		02D618E0E182E76066D0F0DD /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		CEA42F0000EDF02A680F1038 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		D53E461871FEA501B8116B45 /* ChoreChing!.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "ChoreChing!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		08199D55C1B90B3F18A488A2 /* ChoreChing.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ChoreChing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		80D37327A36959578E020D30 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D2DD62A72EB6958C7A94BADB /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		01A2BB4B5E67124742F8939C = {
+		8D4FFD1E01EF746CA1E3254C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				213DBDBCBD46FDDC763182A9 /* Sources */,
-				BB41C3BB17B3A9EAC23E4B09 /* Products */,
+				08199D55C1B90B3F18A488A2 /* ChoreChing.app */,
 			);
+			name = Products;
 			sourceTree = "<group>";
 		};
-		213DBDBCBD46FDDC763182A9 /* Sources */ = {
+		DA0189C81979BE6659620835 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				02D618E0E182E76066D0F0DD /* App.swift */,
-				CEA42F0000EDF02A680F1038 /* ContentView.swift */,
+				D2DD62A72EB6958C7A94BADB /* App.swift */,
+				80D37327A36959578E020D30 /* ContentView.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		BB41C3BB17B3A9EAC23E4B09 /* Products */ = {
+		DBA80BD888F72406823EFEB8 = {
 			isa = PBXGroup;
 			children = (
-				D53E461871FEA501B8116B45 /* ChoreChing!.app */,
+				DA0189C81979BE6659620835 /* Sources */,
+				8D4FFD1E01EF746CA1E3254C /* Products */,
 			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2B17E4B802FC9CD2B0D59AA1 /* ChoreChing! */ = {
+		324229ED496364EAF65659E6 /* ChoreChing */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 41E8382BAAE2746296A9DD5A /* Build configuration list for PBXNativeTarget "ChoreChing!" */;
+			buildConfigurationList = B41DC010F3E461C3E95E793C /* Build configuration list for PBXNativeTarget "ChoreChing" */;
 			buildPhases = (
-				E02C6D0D2AB8249B4E3D4980 /* Sources */,
+				A65A2A6ED5CF0A9959A0DE00 /* Sources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "ChoreChing!";
+			name = ChoreChing;
 			packageProductDependencies = (
 			);
-			productName = "ChoreChing!";
-			productReference = D53E461871FEA501B8116B45 /* ChoreChing!.app */;
+			productName = ChoreChing;
+			productReference = 08199D55C1B90B3F18A488A2 /* ChoreChing.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		90EC94671E5268B177FF0C8A /* Project object */ = {
+		CA5196BAF1786DE05BD982E7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
@@ -74,55 +74,39 @@
 				TargetAttributes = {
 				};
 			};
-			buildConfigurationList = B53D5995C3315DC40C46AAE2 /* Build configuration list for PBXProject "ChoreChing!" */;
+			buildConfigurationList = F69E156DDA508DB5502CA642 /* Build configuration list for PBXProject "ChoreChing" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
 				en,
 			);
-			mainGroup = 01A2BB4B5E67124742F8939C;
+			mainGroup = DBA80BD888F72406823EFEB8;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = BB41C3BB17B3A9EAC23E4B09 /* Products */;
+			productRefGroup = 8D4FFD1E01EF746CA1E3254C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2B17E4B802FC9CD2B0D59AA1 /* ChoreChing! */,
+				324229ED496364EAF65659E6 /* ChoreChing */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E02C6D0D2AB8249B4E3D4980 /* Sources */ = {
+		A65A2A6ED5CF0A9959A0DE00 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				738119D3B27D88FF7B471869 /* App.swift in Sources */,
-				C0330CBF181BDC3A36D6DE3A /* ContentView.swift in Sources */,
+				F5D0D4959BC7E3A3FBFF491A /* App.swift in Sources */,
+				39DC1D2001664C4DE39233AC /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		0055ED4A674B35ECABE8B096 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.ChoreChing;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		C3913564BBEC6E7B4BB4D129 /* Debug */ = {
+		4BB268C31C55E299E9A7E0ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -184,23 +168,25 @@
 			};
 			name = Debug;
 		};
-		E55F696AA488FAD97406756E /* Release */ = {
+		94717DD1BA248DCC1EEE5ECB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.ChoreChing;
+				PRODUCT_BUNDLE_IDENTIFIER = com.choreching.app;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Release;
+			name = Debug;
 		};
-		EA40A8B511D8D439B211281A /* Release */ = {
+		E53D8391E654F477878D80BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -255,28 +241,46 @@
 			};
 			name = Release;
 		};
+		EB3966EA00E32D05F7C9DD4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.choreching.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		41E8382BAAE2746296A9DD5A /* Build configuration list for PBXNativeTarget "ChoreChing!" */ = {
+		B41DC010F3E461C3E95E793C /* Build configuration list for PBXNativeTarget "ChoreChing" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0055ED4A674B35ECABE8B096 /* Debug */,
-				E55F696AA488FAD97406756E /* Release */,
+				94717DD1BA248DCC1EEE5ECB /* Debug */,
+				EB3966EA00E32D05F7C9DD4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		B53D5995C3315DC40C46AAE2 /* Build configuration list for PBXProject "ChoreChing!" */ = {
+		F69E156DDA508DB5502CA642 /* Build configuration list for PBXProject "ChoreChing" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C3913564BBEC6E7B4BB4D129 /* Debug */,
-				EA40A8B511D8D439B211281A /* Release */,
+				4BB268C31C55E299E9A7E0ED /* Debug */,
+				E53D8391E654F477878D80BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 90EC94671E5268B177FF0C8A /* Project object */;
+	rootObject = CA5196BAF1786DE05BD982E7 /* Project object */;
 }
