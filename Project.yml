@@ -9,7 +9,10 @@ targets:
     platform: iOS
     deploymentTarget: "16.0"
     sources:
-      - Sources
+      - Sources/Models
+      - Sources/Data
+      - Sources/Views
+      - Sources/App.swift
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: com.choreching.app
       INFOPLIST_FILE: ""
