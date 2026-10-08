@@ -5,6 +5,9 @@ struct TemplatesView: View {
     @State private var title = ""
     @State private var amount = ""
     @State private var showingAlert = false
+    @State private var editingTemplate: ChoreTemplate?
+    @State private var editTitle = ""
+    @State private var editAmount = ""
     
     var body: some View {
         NavigationView {
@@ -36,12 +39,16 @@ struct TemplatesView: View {
                                     .foregroundColor(.secondary)
                             }
                             Spacer()
-                            if !t.isPreset {
-                                Button(role: .destructive) {
-                                    store.deleteTemplate(t.id)
-                                } label: {
-                                    Image(systemName: "trash")
-                                }
+                            Button("Edit") {
+                                editingTemplate = t
+                                editTitle = t.title
+                                editAmount = String(format: "%.2f", t.amount)
+                            }
+                            .buttonStyle(.bordered)
+                            Button(role: .destructive) {
+                                store.deleteTemplate(t.id)
+                            } label: {
+                                Image(systemName: "trash")
                             }
                         }
                     }
@@ -52,6 +59,26 @@ struct TemplatesView: View {
                 Button("OK", role: .cancel) {}
             } message: {
                 Text("Please enter a valid number.")
+            }
+            .sheet(item: $editingTemplate) { template in
+                NavigationView {
+                    Form {
+                        TextField("Title", text: $editTitle)
+                        TextField("Amount ($)", text: $editAmount)
+                            .keyboardType(.decimalPad)
+                    }
+                    .navigationTitle("Edit Chore")
+                    .navigationBarItems(leading: Button("Cancel") {
+                        editingTemplate = nil
+                    }, trailing: Button("Save") {
+                        if let idx = store.templates.firstIndex(where: { $0.id == template.id }),
+                           let amt = Double(editAmount), !editTitle.isEmpty {
+                            store.templates[idx].title = editTitle
+                            store.templates[idx].amount = amt
+                            editingTemplate = nil
+                        }
+                    })
+                }
             }
         }
     }

@@ -39,17 +39,6 @@ struct HistoryView: View {
                     }
                 }
                 
-                Section(header: Text("Pending Approval")) {
-                    ForEach(store.assigned.filter { $0.status == .done && $0.history }) { a in
-                        HStack {
-                            Text("\(a.title) - \(kidName(a.kidId))")
-                            Spacer()
-                            Text("$\(a.amount, specifier: "%.2f")")
-                                .foregroundColor(.orange)
-                        }
-                    }
-                }
-                
                 Section(header: Text("Declined Chores")) {
                     ForEach(store.assigned.filter { $0.status == .declined }.sorted(by: { $0.completedAt ?? Date() > $1.completedAt ?? Date() })) { a in
                         HStack {

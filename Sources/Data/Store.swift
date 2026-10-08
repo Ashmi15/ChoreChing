@@ -69,6 +69,7 @@ class Store: ObservableObject {
         if let idx = assigned.firstIndex(where: { $0.id == id }) {
             assigned[idx].status = .declined
             assigned[idx].history = true
+            assigned[idx].completedAt = assigned[idx].completedAt ?? Date()
         }
     }
     
