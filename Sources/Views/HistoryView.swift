@@ -49,6 +49,28 @@ struct HistoryView: View {
                         }
                     }
                 }
+                
+                Section(header: Text("Declined Chores")) {
+                    ForEach(store.assigned.filter { $0.status == .declined }.sorted(by: { $0.completedAt ?? Date() > $1.completedAt ?? Date() })) { a in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(a.title)
+                                    .font(.headline)
+                                Text(kidName(a.kidId))
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                                if let completed = a.completedAt {
+                                    Text(completed, style: .date)
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                            Spacer()
+                            Text("$\(a.amount, specifier: "%.2f")")
+                                .foregroundColor(.red)
+                        }
+                    }
+                }
             }
             .navigationTitle("History & Balances")
         }
